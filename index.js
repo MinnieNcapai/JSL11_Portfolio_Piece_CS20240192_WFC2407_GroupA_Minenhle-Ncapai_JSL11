@@ -128,13 +128,13 @@ function refreshTasksUI() {
 // Styles the active board by adding an active class
 // TASK: Fix Bugs
 function styleActiveBoard(boardName) {
-  document.querySelectorAll('.board-btn').foreach(btn => { 
+  document.querySelectorAll('.board-btn').forEach(btn => { // FIX: Corrected method name from "foreach" to "forEach"
     
     if(btn.textContent === boardName) {
-      btn.add('active') 
+      btn.classList.add('active') // FIX: Changed btn.add() to btn.classList.add()
     }
     else {
-      btn.remove('active'); 
+      btn.classList.remove('active'); // FIX: Changed btn.remove() to btn.classList.remove()
     }
   });
 }
