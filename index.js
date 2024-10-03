@@ -19,7 +19,32 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
+  sideBar: document.getElementById("side-bar-div"),
+  logo: document.getElementById("logo"),
+  themeSwitch: document.getElementById("switch"),
+  hideSideBarBtn: document.getElementById("hide-side-bar-btn"),
+  showSideBarBtn: document.getElementById("show-side-bar-btn"),
 
+  headerBoardName: document.getElementById("header-board-name"),
+  editBoardBtn: document.getElementById("edit-board-btn"),
+  editBoardDiv: document.getElementById("editBoardDiv"),
+  columnDivs: document.querySelectorAll(".column-div"),
+  addNewTaskBtn: document.getElementById("add-new-task-btn"),
+  
+  titleInput: document.getElementById("title-input"),
+  descInput: document.getElementById("desc-input"),
+  statusInput: document.getElementById("select-status"),
+  createTaskBtn: document.getElementById("create-task-btn"),
+  modalWindow: document.getElementById("new-task-modal-window"),
+
+  cancelAddTaskBtn: document.getElementById("cancel-add-task-btn"),
+  editTaskModal: document.getElementsByClassName("edit-task-modal-window")[0],
+  editTaskTitleInput: document.getElementById("edit-task-title-input"),
+  editTaskDescInput: document.getElementById("edit-task-desc-input"),
+  editSelectStatus: document.getElementById("edit-select-status"),
+  saveTaskChangesBtn: document.getElementById("save-task-changes-btn"),
+  deleteTaskBtn: document.getElementById("delete-task-btn"),
+  filterDiv: document.getElementById("filterDiv"),
 }
 
 let activeBoard = ""
