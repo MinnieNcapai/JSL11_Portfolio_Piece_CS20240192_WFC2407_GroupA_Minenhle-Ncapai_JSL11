@@ -229,7 +229,7 @@ function addTask(event) {
    // Add the new task to the active board
     if (newTask) {
       addTaskToUI(newTask);
-      toggleModal(false);  // Close the modal
+      toggleModal(false,elements.modalWindow);  // Close the modal
       elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
       event.target.reset(); // Reset the form inputs
       refreshTasksUI(); // Refresh the UI to display updated tasks
@@ -244,7 +244,17 @@ function toggleSidebar(show) {
 
 }
 
-function toggleTheme() {
+// Function to toggle between light and dark themes
+function toggleTheme(event) {
+  document.body.classList.toggle("light-theme");
+    const isLightTheme = document.body.classList.contains("light-theme");
+  
+     // Store theme preference in localStorage
+    localStorage.setItem("light-theme", isLightTheme ? "enabled" : "disabled");
+    elements.themeSwitch.checked = isLightTheme; // Update theme switch status
+    elements.logo.src = elements.logo.src
+      .replace(window.location.origin, ".") // Update logo source
+      .replace(isLightTheme ? "dark" : "light", isLightTheme ? "light" : "dark");  // Switch logo image based on theme
  
 }
 
