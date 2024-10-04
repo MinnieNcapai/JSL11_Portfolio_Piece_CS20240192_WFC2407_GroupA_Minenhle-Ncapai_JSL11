@@ -241,9 +241,9 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
-      title: elements.titleInput.value,
-    description: elements.descInput.value,
-    status: elements.statusInput.value,
+      title: elements.titleInput.value.trim(),
+    description: elements.descInput.value.trim(),
+    status: elements.statusInput.value.trim(),
     board: activeBoard, // Assign current active board
      
     };
@@ -303,9 +303,9 @@ function saveTaskChanges(taskId) {
    // Create an updated task object with new values:  // Get updated title,description and status from input
   const updatedTask = {
     id: taskId,
-    title: elements.editTaskTitleInput.value,
-    description: elements.editTaskDescInput.value,
-    status: elements.editSelectStatus.value,
+    title: elements.editTaskTitleInput.value.trim(),
+    description: elements.editTaskDescInput.value.trim(),
+    status: elements.editSelectStatus.value.trim(),
     board: activeBoard,  // Assign the active board to the task
   };
 
