@@ -259,9 +259,7 @@ function toggleTheme(event) {
 }
 
 
-
-function openEditTaskModal(task) {
-  // Set task details in modal inputs
+ // Set task details in modal inputs
   
 
   // Get button elements from the task modal
@@ -272,7 +270,13 @@ function openEditTaskModal(task) {
 
   // Delete task using a helper function and close the task modal
 
+  // Function to populate and open the edit task modal with task details : ; // Set the title,description and status input values
+function openEditTaskModal(task) {
+  elements.editTaskTitleInput.value = task.title;
+  elements.editTaskDescInput.value = task.description;
+  elements.editSelectStatus.value = task.status;
 
+  urrentTaskId = task.id; // Store the current task ID
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
 
