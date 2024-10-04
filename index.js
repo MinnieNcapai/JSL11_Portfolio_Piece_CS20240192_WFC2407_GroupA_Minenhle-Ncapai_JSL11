@@ -47,7 +47,8 @@ const elements = {
   filterDiv: document.getElementById("filterDiv"),
 }
 
-let activeBoard = ""
+let activeBoard = "";
+let currentTaskId  = null;
 
 // Extracts unique board names from tasks
 // TASK: FIX BUGS
@@ -291,18 +292,12 @@ function saveTaskChanges(taskId) {
     status: elements.editSelectStatus.value.trim(),
     board: activeBoard,  // Assign the active board to the task
   };
-  
-  // Get new user inputs
-  
 
-  // Create an object with the updated task details
-
-
-  // Update task using a hlper functoin
- 
-
-  // Close the modal and refresh the UI to reflect the changes
-
+  // Update the task with the new details
+  putTask(taskId, updatedTask); 
+  // Close the edit task modal
+  toggleModal(false, elements.editTaskModal); 
+// Refresh the UI to reflect the updated tasks
   refreshTasksUI();
 }
 
