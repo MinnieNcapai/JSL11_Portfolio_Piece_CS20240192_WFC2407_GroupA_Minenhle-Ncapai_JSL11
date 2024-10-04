@@ -161,7 +161,7 @@ function addTaskToUI(task) {
   taskElement.textContent = task.title; // Modify as needed
   taskElement.setAttribute('data-task-id', task.id);
   
-  tasksContainer.appendChild(); 
+  tasksContainer.appendChild(taskElement); // FIX: Append task element to the tasksContainer
 }
 
 
@@ -191,6 +191,14 @@ function setupEventListeners() {
   // Theme switch event listener
   elements.themeSwitch.addEventListener('change', toggleTheme);
 
+  // Listen for clicks on the "Add New Task" button
+  elements.addNewTaskBtn.addEventListener('click', () => {
+     // Open the modal when the button is clicked
+    toggleModal(true);
+     // Ensure the filter overlay is visible when the modal is opened
+    elements.filterDiv.style.display = 'block'; // Also show the filter overlay
+  });
+
   // Show Add New Task Modal event listener
   elements.createNewTaskBtn.addEventListener('click', () => {
     toggleModal(true);
@@ -199,6 +207,7 @@ function setupEventListeners() {
 
   // Add new task form submission event listener
   elements.modalWindow.addEventListener('submit',  (event) => {
+    event.preventDefault(); // Prevent default form submission
     addTask(event)
   });
 }
@@ -234,6 +243,8 @@ function addTask(event) {
       elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
       event.target.reset(); // Reset the form inputs
       refreshTasksUI(); // Refresh the UI to display updated tasks
+
+      console.log('Task updated:', updatedTask);
     }
 }
 
@@ -260,24 +271,14 @@ function toggleTheme(event) {
 }
 
 
- // Set task details in modal inputs
-  
 
-  // Get button elements from the task modal
-
-
-  // Call saveTaskChanges upon click of Save Changes button
- 
-
-  // Delete task using a helper function and close the task modal
-
-  // Function to populate and open the edit task modal with task details : ; // Set the title,description and status input values
+  // Function to populate and open the edit task modal with task details :  // Set the title,description and status input values
 function openEditTaskModal(task) {
   elements.editTaskTitleInput.value = task.title;
   elements.editTaskDescInput.value = task.description;
   elements.editSelectStatus.value = task.status;
 
-  urrentTaskId = task.id; // Store the current task ID
+  currentTaskId = task.id; // Store the current task ID
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
 
@@ -287,6 +288,7 @@ function saveTaskChanges(taskId) {
 
    // Create an updated task object with new values:  // Get updated title,description and status from input
   const updatedTask = {
+    id: taskId,
     title: elements.editTaskTitleInput.value.trim(),
     description: elements.editTaskDescInput.value.trim(),
     status: elements.editSelectStatus.value.trim(),
