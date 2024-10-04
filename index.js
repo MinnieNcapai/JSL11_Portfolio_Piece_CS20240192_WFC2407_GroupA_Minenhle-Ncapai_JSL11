@@ -280,7 +280,18 @@ function openEditTaskModal(task) {
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
 }
 
+// Function to save changes to an existing task
 function saveTaskChanges(taskId) {
+  if (!taskId) return; 
+
+   // Create an updated task object with new values:  // Get updated title,description and status from input
+  const updatedTask = {
+    title: elements.editTaskTitleInput.value.trim(),
+    description: elements.editTaskDescInput.value.trim(),
+    status: elements.editSelectStatus.value.trim(),
+    board: activeBoard,  // Assign the active board to the task
+  };
+  
   // Get new user inputs
   
 
