@@ -212,26 +212,36 @@ function toggleModal(show, modal = elements.modalWindow) {
  * COMPLETE FUNCTION CODE
  * **********************************************************************************************************************************************/
 
+// Function to add a new task
 function addTask(event) {
   event.preventDefault(); 
 
   //Assign user input to the task object
     const task = {
-      
+      title: elements.titleInput.value,
+    description: elements.descInput.value,
+    status: elements.statusInput.value,
+    board: activeBoard,
+     
     };
-    const newTask = createNewTask(task);
+    const newTask = createNewTask(task); // Create a new task
+
+   // Add the new task to the active board
     if (newTask) {
       addTaskToUI(newTask);
-      toggleModal(false);
+      toggleModal(false);  // Close the modal
       elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
-      event.target.reset();
-      refreshTasksUI();
+      event.target.reset(); // Reset the form inputs
+      refreshTasksUI(); // Refresh the UI to display updated tasks
     }
 }
 
-
+// Function to toggle sidebar visibility
 function toggleSidebar(show) {
- 
+  elements.showSideBarBtn.style.display = show ? 'none' : 'block';
+  elements.sideBar.style.display = show ? 'block' : 'none'; // Show/hide the sidebar
+  elements.hideSideBarBtn.style.display = show ? 'block' : 'none';
+
 }
 
 function toggleTheme() {
